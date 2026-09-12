@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leafy — AI Plant Identifier & Disease Doctor | Smart Plant Care</title>
+  <meta name="description" content="Identify plants, diagnose leaf diseases, and get smart watering care reminders with Leafy. Advanced AI botanical scanner for houseplants, gardens, and flora." />
+  <meta name="keywords" content="plant identifier, identify plant, plant disease diagnosis, plant doctor, watering reminder, indoor plant care, botanical scanner, leaf disease scanner" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/logo/app_icon.png" />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Floating Botanical Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Sticky Glassmorphic Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar">
+      <a href="#" class="nav-brand">
+        <img src="assets/logo/leafy_logo.png" alt="Leafy Logo" class="nav-logo" />
+        <span class="nav-title">Leafy</span>
+        <span class="nav-version">AI Bot v1.0</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#simulator" class="nav-link">Live Demo</a></li>
+        <li><a href="#gallery" class="nav-link">Screenshots</a></li>
+        <li><a href="#calculator" class="nav-link">Water Calculator</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+      <a href="#download" class="nav-btn">
+        <span>Get on Google Play</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+        </svg>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="hero-badge-pulse"></span>
+              <span>Next-Gen Botanical Intelligence</span>
+            </div>
+            
+            <h1 class="hero-title">
+              Identify Any Plant in Seconds. <br />
+              <span class="gradient-text">Diagnose Leaf Disease Instantly.</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+              Turn your smartphone into an expert botanical assistant. Multi-angle photo scanning, instant disease diagnosis, organic recovery plans, and automated watering care reminders.
+            </p>
+            
+            <div class="hero-actions" id="download">
+              <a href="https://play.google.com/store" target="_blank" class="btn-primary">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                </svg>
+                <span>Download on Google Play</span>
+              </a>
+              
+              <a href="#simulator" class="btn-secondary">
+                <span>⚡ Test Live Demo</span>
+              </a>
+            </div>
+            
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-value">30,000+</span>
+                <span class="stat-label">Flora Species Cataloged</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">98.4%</span>
+                <span class="stat-label">Diagnostic Accuracy</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-value">3-Angle</span>
+                <span class="stat-label">Deep Foliage Inspection</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Interactive 3D Phone Mockup -->
+          <div class="hero-phone-perspective">
+            <div class="floating-hero-pill pill-left">
+              <span>🩺</span>
+              <div>
+                <div style="font-size: 11px; color: var(--text-muted);">Health Check</div>
+                <div>Status: Healthy (90%)</div>
+              </div>
+            </div>
+            
+            <div class="floating-hero-pill pill-right">
+              <span>💧</span>
+              <div>
+                <div style="font-size: 11px; color: var(--text-muted);">Hydration Alert</div>
+                <div>Next Drink in 5 Days</div>
+              </div>
+            </div>
+
+            <div class="phone-mockup-3d">
+              <div class="phone-dynamic-island"></div>
+              <div class="phone-screen">
+                <img src="assets/images/screen_scan.jpg" alt="Leafy Live Scanner" class="phone-screen-img" />
+                
+                <!-- Animated Laser Overlay -->
+                <div class="phone-scanner-overlay">
+                  <div class="scan-laser-line"></div>
+                  <div class="scan-reticle"></div>
+                </div>
+                
+                <!-- Floating In-App Diagnostic Badge -->
+                <div class="phone-floating-badge">
+                  <div class="badge-leaf-icon">🌿</div>
+                  <div>
+                    <div class="badge-text-title">Caladium Hortulanum</div>
+                    <div class="badge-text-sub">● 90% AI Confidence Match</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- GOOGLE PLAY FEATURE GRAPHIC HERO STRIP -->
+    <section class="banner-section">
+      <div class="container">
+        <div class="banner-card">
+          <div class="banner-img-wrap">
+            <img src="assets/images/feature_graphic.jpg" alt="Leafy Feature Graphic Banner" />
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+            <div>
+              <h3 style="font-size: 22px; font-weight: 800; margin-bottom: 4px;">Leafy: Complete AI Botanical Suite</h3>
+              <p style="font-size: 14px; color: var(--text-muted);">The premier houseplant diagnosis, multi-angle inspection, and smart care app for Android.</p>
+            </div>
+            <a href="https://play.google.com/store" target="_blank" class="nav-btn">
+              <span>Install Free on Play Store</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE LIVE SCANNER SIMULATOR -->
+    <section class="simulator-section" id="simulator">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Interactive Preview</span>
+          <h2 class="section-title">Test the <span class="neon-text">AI Scanner</span> in Real-Time</h2>
+          <p class="section-desc">Select different plants below to test our multi-angle botanical recognition and instant health diagnostic engine.</p>
+        </div>
+
+        <div class="simulator-box">
+          <div class="simulator-tabs">
+            <button class="sim-tab-btn active" data-plant="caladium">
+              <span>🌿 Caladium (Heart of Jesus)</span>
+            </button>
+            <button class="sim-tab-btn" data-plant="monstera">
+              <span>🪴 Monstera Deliciosa</span>
+            </button>
+            <button class="sim-tab-btn" data-plant="orchid">
+              <span>🌸 Lady's Slipper Orchid</span>
+            </button>
+          </div>
+
+          <div class="simulator-display-grid">
+            <div class="sim-phone-frame">
+              <img src="assets/images/screen_diagnosis.jpg" id="sim-phone-image" alt="Simulated Plant Inspection" class="sim-phone-img" />
+            </div>
+
+            <div class="sim-results-card">
+              <div class="sim-status-badge" id="sim-status">
+                <span>●</span> Healthy (90%)
+              </div>
+              <h3 class="sim-plant-name" id="sim-name">Caladium</h3>
+              <p class="sim-latin-name" id="sim-latin">Caladium hortulanum</p>
+
+              <div class="sim-meter-group">
+                <div class="sim-meter-header">
+                  <span>AI Confidence Score</span>
+                  <span id="sim-confidence" style="color: var(--mint-bright);">90%</span>
+                </div>
+                <div class="sim-meter-bar">
+                  <div class="sim-meter-fill" id="sim-meter-fill" style="width: 90%;"></div>
+                </div>
+              </div>
+
+              <div class="sim-metrics-grid">
+                <div class="metric-pill">
+                  <div class="metric-pill-title">☀️ Sunlight Needed</div>
+                  <div class="metric-pill-val" id="sim-sunlight">Bright Indirect</div>
+                </div>
+                <div class="metric-pill">
+                  <div class="metric-pill-title">💧 Hydration Rhythm</div>
+                  <div class="metric-pill-val" id="sim-watering">Every 5-7 Days</div>
+                </div>
+                <div class="metric-pill">
+                  <div class="metric-pill-title">💨 Target Humidity</div>
+                  <div class="metric-pill-val" id="sim-humidity">High (60%+)</div>
+                </div>
+                <div class="metric-pill">
+                  <div class="metric-pill-title">🐾 Pet Toxicity</div>
+                  <div class="metric-pill-val" id="sim-toxicity" style="color: #F87171;">Toxic to Pets (ASPCA)</div>
+                </div>
+              </div>
+
+              <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                💡 <strong>Botanist Tip:</strong> Feel the soil 2 inches deep before watering. If dry, give your plant a thorough drink and mist the foliage.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES 4-GRID -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Key Capabilities</span>
+          <h2 class="section-title">Engineered for <span class="gradient-text">Flourishing Plants</span></h2>
+          <p class="section-desc">From indoor apartment jungles to outdoor gardens, Leafy gives you expert-level botanical care in your pocket.</p>
+        </div>
+
+        <div class="features-grid">
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">📸</div>
+            <h3 class="feature-title">Multi-Angle Photo Scanner</h3>
+            <p class="feature-desc">Capture up to 3 distinct angles of leaves, stems, and roots for deep structural inspection and higher classification precision.</p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🩺</div>
+            <h3 class="feature-title">Plant Disease Doctor</h3>
+            <p class="feature-desc">Detect yellowing leaves, powdery mildew, black spots, and root rot instantly. Receive organic step-by-step healing regimens.</p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">💧</div>
+            <h3 class="feature-title">Smart Watering Reminders</h3>
+            <p class="feature-desc">Set tailored hydration intervals (3, 7, 14 days or custom). Receive reliable localized push notifications so you never forget to water.</p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">🌿</div>
+            <h3 class="feature-title">30,000+ Species Catalog</h3>
+            <p class="feature-desc">Explore rich botanical profiles covering scientific families, native origin, pet safety warnings, soil types, and propagation guides.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL APP SCREENSHOTS GALLERY -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">App Tour</span>
+          <h2 class="section-title">Designed with <span class="neon-text">Elegance & Simplicity</span></h2>
+          <p class="section-desc">Experience an interface that puts your plants first. Clean, fast, and distraction-free.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <div class="gallery-device">
+              <img src="assets/images/screen_home.jpg" alt="Home Dashboard & Plant Checkups" />
+            </div>
+            <h4 class="gallery-title">Daily Plant Dashboard</h4>
+            <p class="gallery-sub">Checkup History & Hydration Tips</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-device">
+              <img src="assets/images/screen_angles.jpg" alt="Multi-Angle Photo Capture" />
+            </div>
+            <h4 class="gallery-title">Multi-Angle Capture</h4>
+            <p class="gallery-sub">1 to 3 Angle Foliage Analysis</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-device">
+              <img src="assets/images/screen_scan.jpg" alt="AI Botanical Laser Scanner" />
+            </div>
+            <h4 class="gallery-title">AI Botanical Scanner</h4>
+            <p class="gallery-sub">Sub-Second Neural Recognition</p>
+          </div>
+
+          <div class="gallery-item">
+            <div class="gallery-device">
+              <img src="assets/images/screen_diagnosis.jpg" alt="Full Botanical Diagnostic Record" />
+            </div>
+            <h4 class="gallery-title">Diagnostic Record</h4>
+            <p class="gallery-sub">Confidence Score & Care Guidelines</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE WATERING SCHEDULE CALCULATOR -->
+    <section class="calculator-section" id="calculator">
+      <div class="container">
+        <div class="calc-box">
+          <div>
+            <span class="section-tag">Care Calculator</span>
+            <h2 style="font-size: 34px; margin-bottom: 14px;">Estimate Your Plant's <span class="gradient-text">Watering Rhythm</span></h2>
+            <p style="font-size: 15px; color: var(--text-dim); margin-bottom: 28px;">
+              Different plant varieties and light environments dictate how fast water evaporates. Use this interactive tool to preview Leafy's smart scheduling engine.
+            </p>
+
+            <div class="calc-form-group">
+              <label class="calc-label">Select Plant Family</label>
+              <select id="calc-plant-type" class="calc-select">
+                <option value="tropical">Tropical Foliage (Monstera, Pothos, Caladium)</option>
+                <option value="succulent">Succulents & Cacti (Snake Plant, Aloe, Echeveria)</option>
+                <option value="fern">Ferns & Moisture Lovers (Boston Fern, Maidenhair)</option>
+                <option value="flowering">Flowering Plants (Orchids, Peace Lily, African Violets)</option>
+              </select>
+            </div>
+
+            <div class="calc-form-group">
+              <label class="calc-label">Room Sunlight Exposure</label>
+              <select id="calc-light-level" class="calc-select">
+                <option value="medium">Bright Indirect Light (Standard Living Room)</option>
+                <option value="high">Direct Sun (South-facing window)</option>
+                <option value="low">Low Light / Office Setting</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="calc-result-card">
+            <div class="calc-result-icon">💧</div>
+            <div class="calc-result-title">Recommended Frequency</div>
+            <div class="calc-result-days" id="calc-days-val">7 Days</div>
+            <p class="calc-result-tip" id="calc-tip-text">
+              Standard indoor tropical rhythm. Check top 2 inches of soil before hydrating.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON MATRIX -->
+    <section class="compare-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Why Leafy Wins</span>
+          <h2 class="section-title">The <span class="gradient-text">Superior Choice</span> for Plant Parents</h2>
+        </div>
+
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Feature / Capability</th>
+                <th class="compare-highlight">🌿 Leafy App</th>
+                <th>Typical Generic Apps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Multi-Angle Scanning</strong></td>
+                <td class="compare-highlight">✅ Yes (1 to 3 angles for higher accuracy)</td>
+                <td>❌ Single photo only</td>
+              </tr>
+              <tr>
+                <td><strong>Disease & Pest Doctor</strong></td>
+                <td class="compare-highlight">✅ Instant identification & organic treatments</td>
+                <td>⚠️ Vague or paid add-on</td>
+              </tr>
+              <tr>
+                <td><strong>Smart Watering Reminders</strong></td>
+                <td class="compare-highlight">✅ Built-in custom schedules (3, 7, 14 days)</td>
+                <td>❌ Requires separate tracking app</td>
+              </tr>
+              <tr>
+                <td><strong>Intrusive Paywalls & Ads</strong></td>
+                <td class="compare-highlight">✅ Clean, distraction-free experience</td>
+                <td>❌ Aggressive recurring subscriptions</td>
+              </tr>
+              <tr>
+                <td><strong>Pet Toxicity Warnings</strong></td>
+                <td class="compare-highlight">✅ ASPCA guidelines for dogs and cats</td>
+                <td>⚠️ Often missing or incomplete</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Got Questions?</span>
+          <h2 class="section-title">Frequently Asked <span class="neon-text">Questions</span></h2>
+        </div>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How accurate is Leafy's AI plant recognition?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Leafy uses trained vision models benchmarked over 30,000+ flora species, achieving over 98% accuracy. Taking photos from multiple angles (leaves, stem, whole plant) further increases diagnostic precision.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Can Leafy identify plant diseases and pests?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Yes! Leafy detects powdery mildew, black spot, leaf scorch, blight, rust, spider mites, aphids, thrips, and root rot, providing immediate organic healing and recovery steps.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>How do the watering care reminders work?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              You can set flexible watering frequencies (e.g. Every 3, 7, or 14 days). Leafy schedules local system alarms directly on your device to notify you when your plant is thirsty.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Is my personal data and photo history safe?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              Leafy values user privacy above all else. Your checkup history is stored securely on your device, and we never sell your personal data or photos. Read our full <a href="privacy.html" style="color: var(--mint-bright); text-decoration: underline;">Privacy Policy</a> for details.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER & LEGAL -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="nav-brand" style="margin-bottom: 14px;">
+            <img src="assets/logo/leafy_logo.png" alt="Leafy Logo" class="nav-logo" />
+            <span class="nav-title">Leafy</span>
+          </div>
+          <p class="footer-desc">
+            Your all-in-one AI botanical assistant. Multi-angle photo scanning, disease diagnosis, and smart watering care.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Features</h4>
+          <ul class="footer-links">
+            <li><a href="#features">AI Plant Identifier</a></li>
+            <li><a href="#features">Disease Diagnosis</a></li>
+            <li><a href="#calculator">Watering Calculator</a></li>
+            <li><a href="#gallery">App Screenshots</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Legal & Policy</h4>
+          <ul class="footer-links">
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html#permissions">App Permissions</a></li>
+            <li><a href="privacy.html#gdpr">GDPR Compliance</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Download</h4>
+          <ul class="footer-links">
+            <li><a href="https://play.google.com/store" target="_blank">Google Play Store</a></li>
+            <li><a href="#download">Direct APK Download</a></li>
+            <li><a href="#faq">Support & FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 Leafy — AI Botanical Assistant. All rights reserved.</div>
+        <div>Designed for Google Play Console &amp; GitHub Pages</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
